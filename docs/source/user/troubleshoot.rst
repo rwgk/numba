@@ -112,7 +112,7 @@ Python would do::
    TypeError: unsupported operand type(s) for +: 'int' and 'tuple'
 
 
-My code has a type unification problem
+My code has a type unification problem  TODO(rwgk): glossary
 ======================================
 
 Another common reason for Numba not being able to compile your code is that it

@@ -6,7 +6,7 @@ Just-in-Time compilation
 JIT functions
 -------------
 
-.. decorator:: numba.jit(signature=None, nopython=False, nogil=False, cache=False, forceobj=False, parallel=False, error_model='python', fastmath=False, locals={}, boundscheck=False)
+.. decorator:: numba.jit(signature=None, nopython=True, nogil=False, cache=False, forceobj=False, parallel=False, error_model='python', fastmath=False, locals={}, boundscheck=False)
 
    Compile the decorated function on-the-fly to produce efficient machine
    code.  All parameters are optional.
@@ -53,7 +53,7 @@ JIT functions
 
    If true, *forceobj* forces the function to be compiled in :term:`object
    mode`.  Since object mode is slower than nopython mode, this is mostly
-   useful for testing purposes.
+   useful for testing purposes.  TODO(rwgk) mention loop-jitting here directly
 
    If true, *nogil* tries to release the :py:term:`global interpreter lock`
    inside the compiled function.  The GIL will only be released if Numba can
@@ -523,7 +523,7 @@ Vectorized functions (ufuncs and DUFuncs)
 C callbacks
 -----------
 
-.. decorator:: numba.cfunc(signature, nopython=False, cache=False, locals={})
+.. decorator:: numba.cfunc(signature, nopython=True, cache=False, locals={})
 
    Compile the decorated function on-the-fly to produce efficient machine
    code.  The compiled code is wrapped in a thin C callback that makes it

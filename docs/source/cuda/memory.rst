@@ -7,11 +7,9 @@ Memory management
 Data transfer
 =============
 
-Even though Numba can automatically transfer NumPy arrays to the device,
-it can only do so conservatively by always transferring device memory back to
-the host when a kernel finishes. To avoid the unnecessary transfer for
-read-only arrays, you can use the following APIs to manually control the
-transfer:
+A regular NumPy array is automatically copied to device memory when a kernel
+is launched, and copied back to host memory when the kernel finishes.
+To avoid the copy back for read-only arrays, you can use the following APIs:
 
 .. autofunction:: numba.cuda.device_array
    :noindex:

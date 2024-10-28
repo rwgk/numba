@@ -31,6 +31,9 @@ C language offered by NVidia.  Therefore, it is recommended you read the
 official `CUDA C programming guide <http://docs.nvidia.com/cuda/cuda-c-programming-guide>`_.
 
 
+WANTED: What happens when Numba launches a kernel (or kernels)?
+
+
 Requirements
 ============
 
@@ -98,6 +101,8 @@ if you are using pip.
 
 The use of the NVIDIA bindings is enabled by setting the environment variable
 :envvar:`NUMBA_CUDA_USE_NVIDIA_BINDING` to ``"1"``.
+
+QUESTION: What are the pros and cons, ctypes-based vs cuda-python?
 
 .. _cudatoolkit-lookup:
 

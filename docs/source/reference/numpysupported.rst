@@ -173,7 +173,7 @@ one-dimensional array (it can be combined with an arbitrary number
 of basic indices as well).
 
 .. seealso::
-   `NumPy indexing <http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html>`_
+   `NumPy indexing <https://numpy.org/doc/stable/user/basics.indexing.html>`_
    reference.
 
 

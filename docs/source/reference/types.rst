@@ -132,8 +132,8 @@ compiled functions and Numba ``cfunc`` compiled functions except when:
 
 - using a non-CPU compiler,
 - the compiled function is a Python generator,
-- the compiled function has Omitted arguments,
-- or the compiled function returns Optional value.
+- the compiled function has Omitted arguments,  TODO(rwgk) Omitted cross-ref
+- or the compiled function returns an Optional value.  TODO(rwgk) https://numba.readthedocs.io/en/stable/reference/types.html#optional-types
 
 To disable first-class function support, use ``no_cfunc_wrapper=True``
 decorator option.
@@ -190,7 +190,7 @@ have a precise type.
 Wrapper Address Protocol - WAP
 ++++++++++++++++++++++++++++++
 
-Wrapper Address Protocol provides an API for making any Python object
+The Wrapper Address Protocol provides an API for making any Python object
 a first-class function for Numba :term:`JIT` compiled functions. This assumes
 that the Python object represents a compiled function that can be
 called via its memory address (function pointer value) from Numba :term:`JIT`
@@ -234,6 +234,8 @@ package::
     1.0
     >>> foo(LibMCos(), 0.5), math.cos(0.5)
     (0.8775825618903728, 0.8775825618903728)
+
+NOTE: The example above is currently broken: https://github.com/numba/numba/issues/8282
 
 Miscellaneous Types
 -------------------
@@ -325,6 +327,8 @@ Arrays
    is a string giving the layout of the array: ``A`` means any layout, ``C``
    means C-contiguous and ``F`` means Fortran-contiguous.
 
+   TODO(rwgk): What are ``CS``, ``FS``?
+
 
 Optional types
 --------------
@@ -353,7 +357,7 @@ Type annotations
 
    Create a Numba type corresponding to the given Python *type annotation*.
    ``TypingError`` is raised if the type annotation can't be mapped to a Numba
-   type.  This function is meant to be used at statically compile time to
+   type.  This function is meant to be used at static compile time to
    evaluate Python type annotations.  For runtime checking of Python objects
    see ``typeof`` above.
 

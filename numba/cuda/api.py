@@ -120,7 +120,7 @@ def to_device(obj, stream=0, copy=True, to=None):
         ary = np.empty(shape=d_ary.shape, dtype=d_ary.dtype)
         d_ary.copy_to_host(ary)
 
-    To enqueue the transfer to a stream::
+    To enqueue the transfer from a stream::
 
         hary = d_ary.copy_to_host(stream=stream)
     """

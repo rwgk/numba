@@ -227,12 +227,6 @@ int, bool
 
 Arithmetic operations as well as truth values are supported.
 
-The following attributes and methods are supported:
-
-* ``.conjugate()``
-* ``.real``
-* ``.imag``
-
 float, complex
 --------------
 
@@ -247,7 +241,7 @@ The following attributes and methods are supported:
 str
 ---
 
-Numba supports (Unicode) strings in Python 3.  Strings can be passed into
+Numba supports Python (Unicode) strings.  Strings can be passed into
 :term:`nopython mode` as arguments, as well as constructed and returned from
 :term:`nopython mode`. As in Python, slices (even of length 1) return a new,
 reference counted string.  Optimized code paths for efficiently accessing
@@ -270,12 +264,11 @@ supported:
 * ``+`` (concatenation of strings)
 * ``*`` (repetition of strings)
 * ``in``, ``.contains()``
-* ``==``, ``<``, ``<=``, ``>``, ``>=`` (comparison)
+* ``==``, ``!=``, ``<``, ``<=``, ``>``, ``>=`` (comparison)
 * ``.capitalize()``
 * ``.casefold()``
 * ``.center()``
 * ``.count()``
-* ``.endswith()``
 * ``.endswith()``
 * ``.expandtabs()``
 * ``.find()``
@@ -317,9 +310,8 @@ Regular string literals (e.g. ``"ABC"``) as well as f-strings without format spe
 that only use string and integer variables (types with ``str()`` overload)
 are supported in :term:`nopython mode`.
 
-Additional operations as well as support for Python 2 strings / Python 3 bytes
-will be added in a future version of Numba.  Python 2 Unicode objects will
-likely never be supported.
+Additional operations as well as support for ``bytes`` will be added in a
+future version of Numba.
 
 .. warning::
     The performance of some operations is known to be slower than the CPython
@@ -740,7 +732,8 @@ This typed dictionary has the same API as the Python ``dict``,  it implements
 the ``collections.MutableMapping`` interface and is usable in both interpreted
 Python code and JIT-compiled Numba functions.
 Because the typed dictionary stores keys and values in Numba's native,
-unboxed data layout, passing a Numba dictionary into nopython mode has very low
+unboxed data layout,  # TODO(rwgk) What is this? (cross-reference)
+passing a Numba dictionary into nopython mode has very low
 overhead. However, this means that using a typed dictionary from the Python
 interpreter is slower than a regular dictionary because Numba has to box and
 unbox key and value objects when getting or setting items.
@@ -804,8 +797,8 @@ Dictionary comprehension
 ''''''''''''''''''''''''
 
 Numba supports dictionary comprehension under the assumption that a
-``numba.typed.Dict`` instance can be created from the comprehension.  For
-example::
+``numba.typed.Dict`` instance can be created from the comprehension
+(possibly invoking type unification).  A simple example is::
 
   In [1]: from numba import njit
 
@@ -896,11 +889,11 @@ The None value is supported for identity testing (when using an
 bytes, bytearray, memoryview
 ----------------------------
 
-The :class:`bytearray` type and, on Python 3, the :class:`bytes` type
-support indexing, iteration and retrieving the len().
+The :class:`bytearray` type and the :class:`bytes` type
+support indexing, iteration and retrieving the ``len()``.
 
 The :class:`memoryview` type supports indexing, slicing, iteration,
-retrieving the len(), and also the following attributes:
+retrieving the ``len()``, and also the following attributes:
 
 * :attr:`~memoryview.contiguous`
 * :attr:`~memoryview.c_contiguous`
@@ -961,7 +954,7 @@ Hashing
 The :func:`hash` built-in is supported and produces hash values for all
 supported hashable types with the following Python version specific behavior:
 
-Under Python 3, hash values computed by Numba will exactly match those computed
+Hash values computed by Numba will exactly match those computed
 in CPython under the condition that the :attr:`sys.hash_info.algorithm` is
 ``siphash24`` (default).
 
@@ -976,7 +969,7 @@ Standard library modules
 ---------
 
 Limited support for the :class:`array.array` type is provided through
-the buffer protocol.  Indexing, iteration and taking the len() is supported.
+the buffer protocol.  Indexing, iteration and taking the ``len()`` is supported.
 All type codes are supported except for ``"u"``.
 
 ``cmath``

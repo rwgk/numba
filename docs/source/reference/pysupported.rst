@@ -102,9 +102,8 @@ be returned. For example:
 Inner function and closure
 '''''''''''''''''''''''''''
 
-Numba now supports inner functions as long as they are non-recursive
-and only called locally, but not passed as argument or returned as
-result. The use of closure variables (variables defined in outer scopes)
+Numba supports inner functions as long as they are non-recursive.
+The use of closure variables (variables defined in outer scopes)
 within an inner function is also supported.
 
 Recursive calls

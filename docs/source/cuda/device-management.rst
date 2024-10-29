@@ -58,10 +58,12 @@ Users can then create a new context with another device.
       has multiple GPUs.
 
 The Device List
-===============
+---------------
 
 The Device List is a list of all the GPUs in the system, and can be indexed to
 obtain a context manager that ensures execution on the selected GPU.
+
+QUESTION(rwgk): These are aliases for the same object. Which one is recommended for what purpose?
 
 .. attribute:: numba.cuda.gpus
    :noindex:
@@ -76,7 +78,7 @@ which the current GPU context can also be retrieved:
 
 
 Device UUIDs
-============
+------------
 
 The UUID of a device (equal to that returned by ``nvidia-smi -L``) is available
 in the :attr:`uuid <numba.cuda.cudadrv.driver.Device.uuid>` attribute of a CUDA
@@ -90,3 +92,4 @@ For example, to obtain the UUID of the current device:
    # prints e.g. "GPU-e6489c45-5b68-3b03-bab7-0e7c8e809643"
    print(dev.uuid)
 
+QUESTION(rwgk): Pointer to documentation for all ``dev`` attributes?

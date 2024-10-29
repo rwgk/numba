@@ -35,8 +35,6 @@ A simple example
 
 Here is a sample program that uses the random number generator::
 
-    from __future__ import print_function, absolute_import
-
     from numba import cuda
     from numba.cuda.random import create_xoroshiro128p_states, xoroshiro128p_uniform_float32
     import numpy as np

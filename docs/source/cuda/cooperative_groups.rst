@@ -102,7 +102,7 @@ The maximum grid size for ``sequential_rows`` can be enquired using:
 
 .. code-block:: python
 
-   overload = sequential_rows.overloads[(int32[:,::1],)
+   overload = sequential_rows.overloads[sig]
    max_blocks = overload.max_cooperative_grid_blocks(blockdim)
    print(max_blocks)
    # 1152 (e.g. on Quadro RTX 8000 with Numba 0.52.1 and CUDA 11.0)

@@ -54,6 +54,8 @@ constraints:
   of the ``assert`` keyword in CUDA C/C++, which is ignored unless compiling
   with device debug turned on.
 
+NOTE: Exceptions are handled but not reported.
+
 
 Printing of strings, integers, and floats is supported, but printing is an
 asynchronous operation - in order to ensure that all output is printed after a

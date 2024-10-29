@@ -46,6 +46,9 @@ called in host code, not within CUDA-jitted functions.
 Pinned memory
 =============
 
+TODO(rwgk): What is pinned memory?
+https://stackoverflow.com/questions/69189880/what-is-the-difference-between-mapped-memory-and-managed-memory
+
 .. autofunction:: numba.cuda.pinned
    :noindex:
 .. autofunction:: numba.cuda.pinned_array
@@ -56,6 +59,8 @@ Pinned memory
 
 Mapped memory
 =============
+
+TODO(rwgk): What is mapped memory?
 
 .. autofunction:: numba.cuda.mapped
    :noindex:
@@ -68,6 +73,8 @@ Mapped memory
 
 Managed memory
 ==============
+
+TODO(rwgk): What is managed memory?
 
 .. autofunction:: numba.cuda.managed_array
    :noindex:
@@ -121,7 +128,9 @@ traditional dynamic memory management.
 
    Allocate a shared array of the given *shape* and *type* on the device.
    This function must be called on the device (i.e. from a kernel or
-   device function). *shape* is either an integer or a tuple of integers
+   device function).
+
+   *shape* is either an integer or a tuple of integers
    representing the array's dimensions and must be a simple constant
    expression. A "simple constant expression" includes, but is not limited to:
    
@@ -134,7 +143,9 @@ traditional dynamic memory management.
          at global scope).
 
    The definition must result in a Python ``int`` (i.e. not a NumPy scalar or other
-   scalar / integer-like type). *type* is a :ref:`Numba type <numba-types>` of the
+   scalar / integer-like type).
+
+   *type* is a :ref:`Numba type <numba-types>` of the
    elements needing to be stored in the array. The returned array-like object can be
    read and written to like any normal device array (e.g. through indexing).
 
@@ -256,6 +267,7 @@ unlike traditional dynamic memory management.
    :noindex:
 
    Allocate a local array of the given *shape* and *type* on the device.
+
    *shape* is either an integer or a tuple of integers representing the array's
    dimensions and must be a simple constant expression. A "simple constant expression" 
    includes, but is not limited to:
@@ -269,7 +281,9 @@ unlike traditional dynamic memory management.
          at global scope).
 
    The definition must result in a Python ``int`` (i.e. not a NumPy scalar or other
-   scalar / integer-like type). *type* is a :ref:`Numba type <numba-types>`
+   scalar / integer-like type).
+
+   *type* is a :ref:`Numba type <numba-types>`
    of the elements needing to be stored in the array. The array is private to
    the current thread. An array-like object is returned which can be read and
    written to like any standard array (e.g. through indexing).
@@ -309,15 +323,15 @@ It is added to a queue of pending deallocations.  This design has two benefits:
 
 1. Resource deallocation API may cause the device to synchronize; thus, breaking
    any asynchronous execution.  Deferring the deallocation could avoid latency
-   in performance critical code section.
+   in performance critical code sections.
 2. Some deallocation errors may cause all the remaining deallocations to fail.
    Continued deallocation errors can cause critical errors at the CUDA driver
    level.  In some cases, this could mean a segmentation fault in the CUDA
    driver. In the worst case, this could cause the system GUI to freeze and
-   could only recover with a system reset.  When an error occurs during a
+   the only way to recover may be a system reset.  When an error occurs during a
    deallocation, the remaining pending deallocations are cancelled.  Any
    deallocation error will be reported.  When the process is terminated, the
-   CUDA driver is able to release all allocated resources by the terminated
+   CUDA driver is able to release all resources allocated by the terminated
    process.
 
 The deallocation queue is flushed automatically as soon as the following events

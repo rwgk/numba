@@ -83,6 +83,8 @@ We notice two steps here:
    launch will not return until the data is copied back, and therefore appears
    to execute synchronously.
 
+QUESTION(rwgk): Mention ``forall()`` here?
+
 Choosing the block size
 -----------------------
 

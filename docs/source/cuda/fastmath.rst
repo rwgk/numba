@@ -20,7 +20,7 @@ The CUDA target implements :ref:`fast-math` behavior with two differences.
   - Contraction of multiply and add operations into single fused multiply-add
     operations.
 
-  See the `documentation for nvvmCompileProgram <https://docs.nvidia.com/cuda/libnvvm-api/group__compilation.html#group__compilation_1g76ac1e23f5d0e2240e78be0e63450346>`_ for more details of these optimizations.
+  See the `documentation for nvvmCompileProgram <https://docs.nvidia.com/cuda/libnvvm-api/index.html#compilation>`_ for more details of these optimizations.
 
 * Secondly, calls to a subset of math module functions on ``float32`` operands
   will be implemented using fast approximate implementations from the libdevice

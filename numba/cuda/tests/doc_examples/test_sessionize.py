@@ -62,7 +62,7 @@ class TestSessionization(CUDATestCase):
             )  # Cast to int64 for compatibility
         )
         # Create a vector to hold the results
-        results = cuda.to_device(np.zeros(len(ids)))
+        results = cuda.to_device(np.zeros(len(ids), dtype=np.int64))
         # ex_sessionize.allocate.end
 
         # ex_sessionize.kernel.begin
@@ -75,15 +75,14 @@ class TestSessionization(CUDATestCase):
                 return
 
             # Determine session boundaries
-            is_first_datapoint = gid == 0
-            if not is_first_datapoint:
+            if gid == 0: # First datapoint
+                is_sess_boundary = True
+            else:
                 new_user = user_id[gid] != user_id[gid - 1]
                 timed_out = (
                     timestamp[gid] - timestamp[gid - 1] > session_timeout
                 )
                 is_sess_boundary = new_user or timed_out
-            else:
-                is_sess_boundary = True
 
             # Determine session labels
             if is_sess_boundary:
@@ -95,27 +94,23 @@ class TestSessionization(CUDATestCase):
                 grid = cuda.cg.this_grid()
                 grid.sync()
 
-                look_ahead = 1
                 # Check elements 'forward' of this one
                 # until a new session boundary is found
-                while results[gid + look_ahead] == 0:
-                    results[gid + look_ahead] = gid
-                    look_ahead += 1
-                    # Avoid out-of-bounds accesses by the last thread
-                    if gid + look_ahead == size - 1:
-                        results[gid + look_ahead] = gid
-                        break
+                fwd = gid + 1
+                while fwd < size and results[fwd] == 0:
+                    results[fwd] = gid
+                    fwd += 1
         # ex_sessionize.kernel.end
 
         # ex_sessionize.launch.begin
         sessionize.forall(len(ids))(ids, sec, results)
 
         print(results.copy_to_host())
-        # array([ 0.,  0.,  0.,  3.,  3.,  3.,
-        #         6.,  6.,  6.,  9.,  9., 11.,
-        #         11., 13., 13., 13., 13., 17.,
-        #         18., 19., 20., 21., 21., 23.,
-        #         24., 24., 24., 24.])
+        # array([ 0,  0,  0,  3,  3,  3,
+        #         6,  6,  6,  9,  9, 11,
+        #         11, 13, 13, 13, 13, 17,
+        #         18, 19, 20, 21, 21, 23,
+        #         24, 24, 24, 24])
         # ex_sessionize.launch.end
 
         expect = [

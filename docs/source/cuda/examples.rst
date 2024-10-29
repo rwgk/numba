@@ -65,6 +65,8 @@ way of launching a kernel:
    :dedent: 8
    :linenos:
 
+TODO(rwgk): ``forall()`` cross-reference above is not working.
+
 This prints:
 
 .. code-block:: none
@@ -274,6 +276,14 @@ Let's generate some data and try out the kernel:
    :caption: from ``test_ex_sessionize`` in ``numba/cuda/tests/doc_examples/test_sessionize.py``
    :start-after: ex_sessionize.allocate.begin
    :end-before: ex_sessionize.allocate.end
+   :dedent: 8
+   :linenos:
+
+.. literalinclude:: ../../../numba/cuda/tests/doc_examples/test_sessionize.py
+   :language: python
+   :caption: from ``test_ex_sessionize`` in ``numba/cuda/tests/doc_examples/test_sessionize.py``
+   :start-after: ex_sessionize.launch.begin
+   :end-before: ex_sessionize.launch.end
    :dedent: 8
    :linenos:
 

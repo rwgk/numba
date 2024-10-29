@@ -392,9 +392,10 @@ The following kernel implements the main integration routine:
    :dedent: 8
    :linenos:
 
-This convenience function calls the kernel performs some
-preprocessing and post processing steps. Note the use of Numba's reduction API to
-take sum of the array and compute the final result:
+This convenience function calls the kernel and performs some
+preprocessing and post processing steps. Note the use of Numba's
+:func:`cuda.reduce() <numba.cuda.Reduce>` API to
+compute the sum of the array for the final result::
 
 .. literalinclude:: ../../../numba/cuda/tests/doc_examples/test_montecarlo.py
    :language: python

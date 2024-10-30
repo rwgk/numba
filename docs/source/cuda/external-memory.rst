@@ -318,3 +318,5 @@ to set the memory manager multiple times, noting the following:
           ``@cuda.jit`` prior to context destruction will need to be
           redefined, as the code underlying them will also have been unloaded
           from the GPU.
+
+QUESTION(rwgk): What are "modules owned by the context"? (Not the usual Python modules?)

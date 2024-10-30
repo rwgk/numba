@@ -18,3 +18,5 @@ exit, see the `NVIDIA CUDA documentation
 details. To fix this simply add a call to ``numba.cuda.profile_stop()`` prior
 to the exit point in your program (or wherever you want to stop profiling).
 For more on CUDA profiling support in Numba, see :ref:`cuda-profiling`.
+
+QUESTION(rwgk): Does this also apply when profiling with  Nsight Compute?

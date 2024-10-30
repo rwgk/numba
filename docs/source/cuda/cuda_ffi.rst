@@ -13,6 +13,8 @@ of a Python kernel call to a foreign device function are:
 - A declaration of the device function in Python.
 - A kernel that links with and calls the foreign function.
 
+QUESTION(rwgk): Mention LTO-IR here (above and below, where PTX appears)?
+
 .. _device-function-abi:
 
 Device function ABI
@@ -28,6 +30,7 @@ C/C++:
    function(
      T* return_value,
      ...
+     return 0;
    );
 
 
@@ -170,6 +173,8 @@ of NVRTC subject to the following considerations:
 - The CUDA include directory will be made available to NVRTC on the include
   path; additional includes are not supported.
 
+
+QUESTION(rwgk): Expected? The Complete Example below also works with: NUMBA_CUDA_USE_NVIDIA_BINDING=0 python numba_cuda_ffi_example.py
 
 Complete Example
 ----------------

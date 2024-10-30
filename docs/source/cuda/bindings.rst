@@ -11,6 +11,7 @@ then they can be used by setting the environment variable
 ``NUMBA_CUDA_USE_NVIDIA_BINDING`` to ``1`` prior to the import of Numba. Once
 Numba has been imported, the selected binding cannot be changed.
 
+QUESTION(rwgk): What are the tradeoffs between the alternative CUDA Bindings (internal vs cuda-python)?
 
 Per-Thread Default Streams
 --------------------------

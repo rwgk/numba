@@ -38,6 +38,11 @@ Example: Basic Example
 
     print(D)  # print result
 
+QUESTION(rwgk): What can I do with ``cu_discriminant.reduce()``?
+
+QUESTION(rwgk): How is this different from ``@cuda.jit`` with ``float32[:]`` etc. signatures?
+
+
 Example: Calling Device Functions
 ----------------------------------
 

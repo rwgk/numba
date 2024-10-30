@@ -25,7 +25,7 @@ that must contain the following entries:
 
 - **shape**: ``(integer, ...)``
 
-  A tuple of ``int`` (or ``long``) representing the size of each dimension.
+  A tuple of ``int`` representing the size of each dimension.
 
 - **typestr**: ``str``
 
@@ -35,7 +35,7 @@ that must contain the following entries:
 - **data**: ``(integer, boolean)``
 
   The **data** is a 2-tuple.  The first element is the data pointer
-  as a Python ``int`` (or ``long``).  The data must be device-accessible.
+  as a Python ``int``.  The data must be device-accessible.
   For zero-size arrays, use ``0`` here.
   The second element is the read-only flag as a Python ``bool``.
 
@@ -56,7 +56,7 @@ The following are optional entries:
 - **strides**: ``None`` or ``(integer, ...)``
 
   If **strides** is not given, or it is ``None``, the array is in
-  C-contiguous layout. Otherwise, a tuple of ``int`` (or ``long``) is explicitly
+  C-contiguous layout. Otherwise, a tuple of ``int`` is explicitly
   given for representing the number of bytes to skip to access the next
   element at each dimension.
 
@@ -324,6 +324,13 @@ the future, by eliding synchronizations when a kernel or driver API operation
 (e.g.  a memcopy or memset) is launched on the same stream as an imported
 array.
 
+QUESTION(rwgk):
+TBH I have a very hard time following the documentation on synchronization.
+Would it be possible to describe exactly what numba.cuda is doing internally
+with regards to synchronization, so that users can reason about
+synchronization mechanisms for their specific context, as an alternative (or
+in addition) to studying the requirements layed out above?
+
 
 .. _example-multi-streams:
 
@@ -523,7 +530,7 @@ The following Python libraries have adopted the CUDA Array Interface:
       consumes objects exporting the CUDA Array Interface.
 - The RAPIDS stack:
 
-    - `cuDF <https://rapidsai.github.io/projects/cudf/en/0.11.0/10min-cudf-cupy.html>`_
+    - `cuDF <https://docs.rapids.ai/api/cudf/nightly/>`_
     - `cuML <https://docs.rapids.ai/api/cuml/nightly/>`_
     - `cuSignal <https://github.com/rapidsai/cusignal>`_
     - `RMM <https://docs.rapids.ai/api/rmm/stable/>`_

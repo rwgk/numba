@@ -4,12 +4,13 @@ Sharing CUDA Memory
 
 .. _cuda-ipc-memory:
 
-Sharing between process
-=======================
+Sharing between processes
+=========================
 
 Sharing between processes is implemented using the Legacy CUDA IPC API
 (functions whose names begin with ``cuIpc``), and is supported only on Linux.
 
+QUESTION(rwgk): Is there a replacement for the "Legacy CUDA IPC API"?
 
 Export device array to another process
 --------------------------------------

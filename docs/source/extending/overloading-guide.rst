@@ -63,7 +63,7 @@ As you can see, the implementation only supports what you need right now:
 * All vector norms
 * Only the Frobenius norm for matrices
 * Code sharing between vector and matrix implementations using
-  ``@register_jitable``.
+  ``@register_jitable``.  QUESTION(rwgk): The example also works with ``@njit``.
 * Norms are implemented using NumPy syntax. (This is possible because
   Numba is very aware of NumPy and many functions are supported.)
 
@@ -105,7 +105,7 @@ additional things to watch out for.
 
 * If you are implementing a new function, you should always update the
   `documentation
-  <https://numba.pydata.org/numba-doc/latest/reference/numpysupported.html>`_.
+  <https://numba.readthedocs.io/en/stable/reference/numpysupported.html>`_.
   The sources can be found in ``docs/source/reference/numpysupported.rst``. Be
   sure to mention any limitations that your implementation has, e.g. no support
   for the ``axis`` keyword.
@@ -185,7 +185,7 @@ additional things to watch out for.
   replicates NumPy from some particular version onwards.
 
 * You can look at the Numba source code for inspiration, many of the overloaded
-  NumPy functions and methods are in ``numba/targets/arrayobj.py``. Below, you
+  NumPy functions and methods are in ``numba/np/arrayobj.py``. Below, you
   will find a list of implementations to look at that are well implemented in
   terms of accepted types and test coverage.
 

@@ -207,6 +207,9 @@ Streams are instances of :class:`numba.cuda.cudadrv.driver.Stream`:
 .. autoclass:: numba.cuda.cudadrv.driver.Stream
    :members: synchronize, auto_synchronize, add_callback, async_done
 
+QUESTION(rwgk): How is ``add_callback`` different from ``numba.cuda.event()``?
+What is the replacement for the deprecated ``add_callback``?
+
 To create a new stream:
 
 .. autofunction:: numba.cuda.stream

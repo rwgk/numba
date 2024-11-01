@@ -731,7 +731,7 @@ This typed dictionary has the same API as the Python ``dict``,  it implements
 the ``collections.MutableMapping`` interface and is usable in both interpreted
 Python code and JIT-compiled Numba functions.
 Because the typed dictionary stores keys and values in Numba's native,
-unboxed data layout,  # TODO(rwgk) What is this? (cross-reference)
+unboxed data layout,  # TODO(rwgk) https://numba.readthedocs.io/en/stable/extending/low-level.html#boxing-and-unboxing
 passing a Numba dictionary into nopython mode has very low
 overhead. However, this means that using a typed dictionary from the Python
 interpreter is slower than a regular dictionary because Numba has to box and

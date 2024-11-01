@@ -48,6 +48,9 @@ return anything (i.e. returns None), other definitions are tried until
 one succeeds.  Therefore, multiple libraries may overload :func:`len()`
 for different types without conflicting with each other.
 
+TODO(rwgk): 1. Distill info from Graham into a better example here.
+TODO(rwgk): 2. Cross-reference overloading-guide.html
+
 Implementing methods
 --------------------
 

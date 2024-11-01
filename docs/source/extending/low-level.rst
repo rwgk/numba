@@ -39,6 +39,8 @@ and typing *operations* (or *functions*) on known value types.
    where *val* is the Python value being typed and *c* is a context
    object.
 
+   TODO(rwgk): cross-reference to example: https://numba.readthedocs.io/en/stable/extending/interval-example.html#type-inference-for-python-values
+
 
 .. decorator:: type_callable(func)
 

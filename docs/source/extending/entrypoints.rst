@@ -3,7 +3,7 @@ Registering Extensions with Entry Points
 
 Often, third party packages will have a user-facing API as well as define
 extensions to the Numba compiler.  In those situations, the new types and
-overloads can registered with Numba when the package is imported by the user.
+overloads can be registered with Numba when the package is imported by the user.
 However, there are situations where a Numba extension would not normally be
 imported directly by the user, but must still be registered with the Numba
 compiler.  An example of this is the `numba-scipy

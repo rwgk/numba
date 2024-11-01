@@ -114,6 +114,8 @@ e.g. declaring the type of a :ref:`typed.List <feature-typed-list>`.::
 Note that this feature is only supported for simple numerical types. Application
 to compound types, e.g. record types, is not supported.
 
+QUESTION(rwgk): Is there more documentation for ``Array`` that could be cross-referenced here? E.g. what exactly is contiguity?
+
 Functions
 ---------
 

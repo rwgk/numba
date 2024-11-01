@@ -222,6 +222,8 @@ inner loops. The compilation of inner loops can still fallback to
 :term:`object mode` if they use types or operations that  
 :term:`nopython mode` does not support. 
 
+TODO(rwgk): Mention (maybe somewhere else?): as of release 0.59, ``nopython=False`` is a no-op (https://github.com/numba/numba/issues/9247)
+
 
 Disabling JIT compilation
 =========================
@@ -1037,3 +1039,5 @@ We can use ``cuda-memcheck`` to find the memory error:
   =========     by thread (30,0,0) in block (0,0,0)
   =========     Address 0x500a600f0 is out of bounds
   ...
+
+TODO(rwgk): ``compute-sanitizer --tool memcheck``

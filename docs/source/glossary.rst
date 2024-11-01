@@ -33,6 +33,9 @@ Glossary
       Shorthand for "a function :term:`JIT-compiled <JIT>` with Numba using
       the :ref:`@jit <jit>` decorator."
 
+   kernel
+       TODO(rwgk): see slack "saved for later"
+
    lifted loops
    loop-lifting
    loop-jitting

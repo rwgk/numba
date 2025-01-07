@@ -6,17 +6,16 @@ import unittest
 import numba.cuda.pointer_arithmetic # noqa: F401
 
 
-def pointer_advance(this, distance):
-    this[0] = this[0] + distance
+def pointer_add(ptr, distance):
+    ptr + distance
 
 
 class TestPointerArithmetic(CUDATestCase):
 
-    def test_compile_pointer_pointer_int32(self):
-        thisty = types.CPointer(types.CPointer(types.int32))
+    def test_pointer_add(self):
         ptx, _ = cuda.compile(
-            pointer_advance,
-            sig=types.void(thisty, types.uint64),
+            pointer_add,
+            sig=types.void(types.CPointer(types.int32), types.uint64),
             output="ptx")
         self.assertGreater(len(ptx), 0)
 
